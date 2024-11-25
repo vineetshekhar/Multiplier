@@ -1,0 +1,20 @@
+module multiplier(input [7:0] a, b, output [15:0] product);
+    assign product = a * b;
+endmodule
+
+module testbench;
+    reg [7:0] a, b;
+    wire [15:0] product;
+
+    // Instantiate the multiplier
+    multiplier uut (.a(a), .b(b), .product(product));
+
+    initial begin
+        // Test case 1
+        a = 8'd5; 
+        b = 8'd6;
+        #10;
+        $display("Product: %d", product);  // Expected output: 30
+        $stop;
+    end
+endmodule
